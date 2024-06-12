@@ -29,7 +29,7 @@ try {
     const iconName = icon.name.replace(/-([a-z])/g, g => g[1].toUpperCase())
     // 首字母也要大写
     const exportName = iconName.charAt(0).toUpperCase() + iconName.slice(1)
-    newExports[`./${exportName}`] = `./dist/${exportName}.js`
+    newExports[`./${exportName}.js`] = `./dist/${exportName}.js`
   })
   // 重新写入 package.json
   packageJson.exports = newExports
