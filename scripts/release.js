@@ -35,6 +35,10 @@ try {
   packageJson.exports = newExports
   fs.writeFileSync('./package.json', `${JSON.stringify(packageJson, null, 2)}\n`)
 
+  execSync('git add .')
+  execSync('git commit -m "release-prepare: update package.json"')
+  
+
   const newVersion = execSync(`npm version ${version}`)
   execSync('git push')
   execSync(`npm publish ./`)
