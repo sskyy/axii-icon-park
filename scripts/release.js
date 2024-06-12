@@ -16,9 +16,9 @@ if (!isClean) {
 }
 
 try {
-  // 去除 link
-  execSync('npm install')
-  execSync('npm run build')
+  // build 时间太长了，而且看不到反馈，所以注释掉，需要手动 build
+  // execSync('npm install')
+  // execSync('npm run build')
   // 读取 package.json 内容
   const packageJson =  require('../package.json')
   // 从 icons.json 中为每一个 icon 重新生成 exports 字段。
