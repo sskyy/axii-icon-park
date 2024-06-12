@@ -3,10 +3,6 @@ import fs from 'fs'
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
-const version = process.argv[2]
-if (!version) {
-  throw new Error('Missing version argument')
-}
 
 //
 const gitStatus = execSync('git status ./ --porcelain').toString().trim()
@@ -17,8 +13,8 @@ if (!isClean) {
 
 try {
   // build 时间太长了，而且看不到反馈，所以注释掉，需要手动 build
-  // execSync('npm install')
-  // execSync('npm run build')
+  execSync('npm install')
+  execSync('npx vite build -c ../vite.prod.config.ts')
   // 读取 package.json 内容
   const packageJson =  require('../package.json')
   // 从 icons.json 中为每一个 icon 重新生成 exports 字段。
@@ -35,14 +31,6 @@ try {
   packageJson.exports = newExports
   fs.writeFileSync('./package.json', `${JSON.stringify(packageJson, null, 2)}\n`)
 
-  execSync('git add .')
-  execSync('git commit -m "release-prepare: update package.json"')
-
-
-  const newVersion = execSync(`npm version ${version}`)
-  execSync('git push')
-  execSync(`npm publish ./`)
-  console.log(`published version ${newVersion}`)
 } catch (e) {
   console.error(e)
   process.exit(1)

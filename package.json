@@ -8,7 +8,7 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "vite build -c ./vite.prod.config.ts",
+    "build": "node scripts/build.js",
     "release": "node scripts/release.js"
   },
   "author": "sskyy <skyking_H@hotmail.com>",
