@@ -33,7 +33,7 @@ try {
   })
   // 重新写入 package.json
   packageJson.exports = newExports
-  fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2))
+  fs.writeFileSync('./package.json', `${JSON.stringify(packageJson, null, 2)}\n`)
 
   const newVersion = execSync(`npm version ${version}`)
   execSync('git push')
