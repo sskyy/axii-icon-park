@@ -14,7 +14,7 @@
   "author": "sskyy <skyking_H@hotmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "axii": "^2.6.12"
+    "axii": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.11",
